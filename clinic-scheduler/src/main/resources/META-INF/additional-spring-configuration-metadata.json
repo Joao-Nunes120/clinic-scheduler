@@ -1,0 +1,28 @@
+{
+    "properties": [
+      {
+        "name": "node.workers",
+        "type": "java.lang.Integer",
+        "description": "Número fixo de workers do nó.",
+        "defaultValue": 4
+      },
+      {
+        "name": "node.queue-capacity",
+        "type": "java.lang.Integer",
+        "description": "Número máximo de tarefas à espera na fila do nó.",
+        "defaultValue": 100
+      },
+      {
+        "name": "app.seed-data",
+        "type": "java.lang.Boolean",
+        "description": "Ativa o carregamento dos dados iniciais de teste.",
+        "defaultValue": false
+      },
+      {
+        "name": "app.seed-month",
+        "type": "java.lang.String",
+        "description": "Mês da agenda inicial, no formato yyyy-MM.",
+        "defaultValue": "2026-12"
+      }
+    ]
+  }
