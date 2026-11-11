@@ -10,6 +10,68 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clinic -d clinic_scheduler"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  node1:
+    image: clinic-node:local
+    cpus: 0.5
+    mem_limit: 768m
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/clinic_scheduler
+      SPRING_DATASOURCE_USERNAME: clinic
+      SPRING_DATASOURCE_PASSWORD: clinic_dev
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: "false"
+      APP_SEED_DATA: "false"
+      NODE_WORKERS: "4"
+      NODE_QUEUE_CAPACITY: "100"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  node2:
+    image: clinic-node:local
+    cpus: 1.0
+    mem_limit: 768m
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/clinic_scheduler
+      SPRING_DATASOURCE_USERNAME: clinic
+      SPRING_DATASOURCE_PASSWORD: clinic_dev
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: "false"
+      APP_SEED_DATA: "false"
+      NODE_WORKERS: "4"
+      NODE_QUEUE_CAPACITY: "100"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  node3:
+    image: clinic-node:local
+    cpus: 2.0
+    mem_limit: 768m
+    ports:
+      - "8083:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/clinic_scheduler
+      SPRING_DATASOURCE_USERNAME: clinic
+      SPRING_DATASOURCE_PASSWORD: clinic_dev
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: "false"
+      APP_SEED_DATA: "false"
+      NODE_WORKERS: "4"
+      NODE_QUEUE_CAPACITY: "100"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
