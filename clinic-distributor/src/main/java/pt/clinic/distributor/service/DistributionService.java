@@ -138,4 +138,23 @@ public class DistributionService {
             double averageDecisionMs
     ) {
     }
+    
+    public List<NodeMetrics> getNodeMetrics() {
+        return nodes.stream()
+                .map(node -> new NodeMetrics(
+                        node.getId(),
+                        node.getCapacity(),
+                        node.getPendingRequests(),
+                        node.getAssignedRequests()
+                ))
+                .toList();
+    }
+    
+    public record NodeMetrics(
+            String id,
+            double capacity,
+            int pendingRequests,
+            long assignedRequests
+    ) {
+    }
 }

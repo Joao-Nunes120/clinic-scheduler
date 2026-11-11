@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.constraints.Positive;
 import pt.clinic.distributor.service.DistributionService;
+import java.util.List;
 
 @RestController
 public class DistributorController {
@@ -82,5 +83,10 @@ public class DistributorController {
                 .status(nodeResponse.statusCode())
                 .headers(headers)
                 .body(nodeResponse.body());
+    }
+
+    @GetMapping("/distributor/nodes")
+    public List<DistributionService.NodeMetrics> getNodeMetrics() {
+        return distributionService.getNodeMetrics();
     }
 }

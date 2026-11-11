@@ -2,13 +2,16 @@ package pt.clinic.distributor.node;
 
 import java.net.URI;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 
 public class NodeState {
 
     private final String id;
     private final URI baseUri;
     private final double capacity;
+
     private final AtomicInteger pendingRequests = new AtomicInteger(0);
+    private final LongAdder assignedRequests = new LongAdder();
 
     public NodeState(String id, URI baseUri, double capacity) {
         if (!Double.isFinite(capacity) || capacity <= 0) {
@@ -38,8 +41,13 @@ public class NodeState {
         return pendingRequests.get();
     }
 
+    public long getAssignedRequests() {
+        return assignedRequests.sum();
+    }
+
     public void incrementPendingRequests() {
         pendingRequests.incrementAndGet();
+        assignedRequests.increment();
     }
 
     public void decrementPendingRequests() {
