@@ -1,6 +1,21 @@
 {
     "properties": [
       {
+        "name": "distributor.policy",
+        "type": "java.lang.String",
+        "description": "Política de distribuição: round-robin ou capacity-aware."
+      },
+      {
+        "name": "distributor.workers",
+        "type": "java.lang.Integer",
+        "description": "Número de threads de atribuição. Deve ser 1 no round-robin."
+      },
+      {
+        "name": "distributor.queue-capacity",
+        "type": "java.lang.Integer",
+        "description": "Número máximo de tarefas à espera na fila central."
+      },
+      {
         "name": "distributor.nodes.node1.url",
         "type": "java.lang.String",
         "description": "Endereço HTTP do nó 1."

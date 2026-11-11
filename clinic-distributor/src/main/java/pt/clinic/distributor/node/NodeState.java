@@ -1,4 +1,4 @@
-package pt.clinic.distributor.distribution;
+package pt.clinic.distributor.node;
 
 import java.net.URI;
 import java.util.concurrent.atomic.AtomicInteger;

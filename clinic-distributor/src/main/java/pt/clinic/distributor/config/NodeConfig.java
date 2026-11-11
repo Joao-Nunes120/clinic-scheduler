@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import pt.clinic.distributor.distribution.NodeState;
+import pt.clinic.distributor.node.NodeState;
 
 @Configuration
 public class NodeConfig {
