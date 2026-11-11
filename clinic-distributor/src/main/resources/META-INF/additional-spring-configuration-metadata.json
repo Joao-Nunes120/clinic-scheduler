@@ -1,0 +1,34 @@
+{
+    "properties": [
+      {
+        "name": "distributor.nodes.node1.url",
+        "type": "java.lang.String",
+        "description": "Endereço HTTP do nó 1."
+      },
+      {
+        "name": "distributor.nodes.node1.capacity",
+        "type": "java.lang.Double",
+        "description": "Capacidade medida do nó 1."
+      },
+      {
+        "name": "distributor.nodes.node2.url",
+        "type": "java.lang.String",
+        "description": "Endereço HTTP do nó 2."
+      },
+      {
+        "name": "distributor.nodes.node2.capacity",
+        "type": "java.lang.Double",
+        "description": "Capacidade medida do nó 2."
+      },
+      {
+        "name": "distributor.nodes.node3.url",
+        "type": "java.lang.String",
+        "description": "Endereço HTTP do nó 3."
+      },
+      {
+        "name": "distributor.nodes.node3.capacity",
+        "type": "java.lang.Double",
+        "description": "Capacidade medida do nó 3."
+      }
+    ]
+  }
